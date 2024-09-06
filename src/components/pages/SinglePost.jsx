@@ -22,9 +22,35 @@ export default function SinglePostPage() {
   return (
     <div className="flex flex-col gap-[100px]">
       <Header />
-      <div>
-        <div className="text-[36px] text-[#181A2A] font-semibold">
-          {article?.title}
+      <div className="flex flex-col items-center">
+        <div className="w-[800px] flex flex-col gap-8">
+          <div className="flex flex-col gap-5">
+            <div className="text-[36px] text-[#181A2A] font-semibold">
+              {article?.title}
+            </div>
+            <div className="flex gap-5 items-center pb-2 justify-between">
+              <div className="flex gap-3 items-center">
+                <img
+                  src={article.user?.profile_image_90}
+                  alt=""
+                  className="w-9 h-9 rounded-full"
+                />
+                <div className="text-[#97989F] text-base font-medium">
+                  {article.user?.name}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              src={article?.cover_image}
+              alt=""
+              className="w-full no-repeat"
+            />
+          </div>
+          <div>
+            <p></p>
+          </div>
         </div>
       </div>
 
