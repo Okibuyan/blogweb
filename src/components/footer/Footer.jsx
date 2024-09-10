@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CopyRight } from "../svg/CopyRight";
 import { FacebookIcon } from "../svg/FacebookIcon";
 import { FooterLogo } from "../svg/FooterLogo";
@@ -28,9 +29,9 @@ export const Footer = () => {
           </div>
         </div>
         <div className="text-[#3B3C4A] flex flex-col gap-2">
-          <a href="#home">Home</a>
-          <a href="#blog">Blog</a>
-          <a href="#contact">Contact</a>
+          <Link href="/">Home</Link>
+          <Link href="blogs">Blog</Link>
+          <Link href="contact-us">Contact</Link>
         </div>
         <div className="flex gap-[25px]">
           <a href="">

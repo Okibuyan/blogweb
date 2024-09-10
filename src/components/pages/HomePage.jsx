@@ -1,16 +1,16 @@
 import BlogPostHomepage from "../blog-post/ArticleCardHomepage";
+import Carousel from "../carousel/Carousel";
 
 import { Footer } from "../footer/Footer";
 import { Header } from "../header/Header";
+import Trending from "../trending/Trending";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-[100px]">
       <Header />
-      <div className=" flex justify-center">
-        <div className="container text-2xl font-bold">All Blog Post</div>
-      </div>
-
+      <Carousel />
+      <Trending />
       <BlogPostHomepage />
       <Footer />
     </div>

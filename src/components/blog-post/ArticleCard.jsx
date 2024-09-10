@@ -1,36 +1,10 @@
+import { generateMonth } from "@/utils/months";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ArticleCard = ({ article }) => {
   const publishedDate = new Date(article.published_at);
 
-  const generatMonth = (month) => {
-    switch (month) {
-      case 1:
-        return "January";
-      case 2:
-        return "February";
-      case 3:
-        return "March";
-      case 4:
-        return "April";
-      case 5:
-        return "May";
-      case 6:
-        return "June";
-      case 7:
-        return "July";
-      case 8:
-        return "August";
-      case 9:
-        return "September";
-      case 10:
-        return "October";
-      case 11:
-        return "November";
-      case 12:
-        return "December";
-    }
-  };
   return (
     <div className="border-[#E8E8EA] rounded-xl border gap-4 p-4 flex flex-col justify-between">
       <div className="flex flex-col gap-4  ">
@@ -61,7 +35,7 @@ const ArticleCard = ({ article }) => {
         </div>
 
         <p className=" text-[#97989F] text-base font-normal">
-          {generatMonth(publishedDate.getMonth())} {publishedDate.getDay()},{" "}
+          {generateMonth(publishedDate.getMonth())} {publishedDate.getDay()},{" "}
           {publishedDate.getFullYear()}
         </p>
       </div>
@@ -91,7 +65,11 @@ export default function BlogPost() {
     <div className="flex flex-col items-center w-ful gap-8 pb-16">
       <div className="container flex flex-wrap justify-between gap-5 ">
         {articles.slice(0, visibleCount).map((article) => {
-          return <ArticleCard key={article.id} article={article} />;
+          return (
+            <Link rel="stylesheet" href={`/blogs/${article.id}`}>
+              <ArticleCard key={article.id} article={article} />;
+            </Link>
+          );
         })}
       </div>
       {visibleCount < articles.length && (

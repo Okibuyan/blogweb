@@ -8,9 +8,9 @@ export const Header = () => {
       <div className=" flex container items-center justify-between">
         <LogoIcon />
         <div className="text-[#3B3C4A]  text-base font-normal flex gap-10">
-          <Link href="./">Home</Link>
+          <Link href="/">Home</Link>
           <Link href="blogs">Blog</Link>
-          <Link href="contact">Contact</Link>
+          <Link href="contact-us">Contact</Link>
         </div>
         <div className="h-9 w-[166px]  flex gap-1">
           <input
