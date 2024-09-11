@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { CopyRight } from "../svg/CopyRight";
-import { FacebookIcon } from "../svg/FacebookIcon";
-import { FooterLogo } from "../svg/FooterLogo";
-import { InstagramIcon } from "../svg/InstagramIcon";
-import { LinkedInIcon } from "../svg/LinkedInIcon";
-import { MetaBlogText } from "../svg/MetaBlogText";
-import { TwitterIcon } from "../svg/TwitterIcon";
+
+import { FacebookIcon } from "@/components/svg/FacebookIcon";
+import { FooterLogo } from "@/components/svg/FooterLogo";
+import { InstagramIcon } from "@/components/svg/InstagramIcon";
+import { LinkedInIcon } from "@/components/svg/LinkedInIcon";
+import { MetaBlogText } from "@/components/svg/MetaBlogText";
+import { TwitterIcon } from "@/components/svg/TwitterIcon";
+import { CopyRight } from "@/components/svg/CopyRight";
 
 export const Footer = () => {
   return (

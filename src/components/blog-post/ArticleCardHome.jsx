@@ -1,6 +1,6 @@
 import { generateMonth } from "@/utils/months";
 
-export const ArticleCard = ({ article }) => {
+export const ArticleCardHomePage = ({ article }) => {
   const publishedDate = new Date(article.published_at);
 
   return (
@@ -16,7 +16,6 @@ export const ArticleCard = ({ article }) => {
             <p className="text-gray-500">No cover image found</p>
           </div>
         )}
-
         <div className="flex">
           {article.tag_list && article.tag_list.length > 0 ? (
             <div className="px-[10px] py-1   bg-[#4B6BFB0D] rounded-md capitalize text-[#4B6BFB] ">
@@ -35,19 +34,8 @@ export const ArticleCard = ({ article }) => {
         </div>
       </div>
       <div className="flex gap-5 items-center pb-2 justify-between">
-        <div className="flex gap-3 items-center">
-          <img
-            src={article.user.profile_image_90}
-            alt=""
-            className="w-9 h-9 rounded-full"
-          />
-          <div className="text-[#97989F] text-base font-medium">
-            {article.user.name}
-          </div>
-        </div>
-
         <p className=" text-[#97989F] text-base font-normal">
-          {generateMonth(publishedDate.getMonth())} {publishedDate.getDay()},
+          {generateMonth(publishedDate.getMonth())} {publishedDate.getDay()},{" "}
           {publishedDate.getFullYear()}
         </p>
       </div>

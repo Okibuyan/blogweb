@@ -22,7 +22,7 @@ export default function Trending() {
           Trending
         </h1>
 
-        <div className="flex justify-between container">
+        <div className="flex justify-between gap-5 container">
           {articles.map((article) => {
             return (
               <Link

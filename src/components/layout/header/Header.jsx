@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { LogoIcon } from "../svg/LogoIcon";
-import { SearchIcon } from "../svg/SearchIcon";
+import { LogoIcon } from "@/components/svg/LogoIcon";
+import { SearchIcon } from "@/components/svg/SearchIcon";
 
 export const Header = () => {
   return (
@@ -12,13 +12,13 @@ export const Header = () => {
           <Link href="blogs">Blog</Link>
           <Link href="contact-us">Contact</Link>
         </div>
-        <div className="h-9 w-[166px]  flex gap-1">
+        <div className="h-9 flex gap-1 relative">
           <input
             type="text"
             placeholder="Search"
             className="text-[#A1A1AA] bg-[#F4F4F5] rounded-[5px] p-2 "
           />
-          <div className="absolute pl-[165px] pt-[10px] ">
+          <div className="absolute right-2 top-[10px]  ">
             <button>
               <SearchIcon />
             </button>
