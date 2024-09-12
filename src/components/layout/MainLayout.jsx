@@ -3,7 +3,7 @@ import { Header } from "./header/Header";
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col gap-[100px] w-full">
       <Header />
       {children}
       <Footer />
