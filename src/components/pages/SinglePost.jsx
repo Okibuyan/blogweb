@@ -2,21 +2,23 @@ import BlogPostHomepage from "../blog-post/ArticleCardHome";
 import BlogPost, { ArticleCard } from "../blog-post/ArticleCard";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { generateMonth } from "@/utils/months";
+
 import MainLayout from "../layout/MainLayout";
+import { generateMonth } from "../utils/months";
 
 export default function SinglePostPage() {
   const router = useRouter();
+  const id = router.query.id;
   const [article, setArticle] = useState([]);
   const publishedDate = new Date(article.published_at);
   const fetchData = () => {
-    fetch(`https://dev.to/api/articles/${router.query.id}`)
+    fetch(`https://dev.to/api/articles/${id}`)
       .then((response) => response.json())
       .then((data) => setArticle(data));
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <MainLayout>
@@ -45,11 +47,17 @@ export default function SinglePostPage() {
               </div>
             </div>
             <div>
-              <img
-                src={article?.cover_image}
-                alt=""
-                className="w-full no-repeat h-[462px] rounded-xl"
-              />
+              {article.cover_image ? (
+                <img
+                  src={article?.cover_image}
+                  alt=""
+                  className="w-full no-repeat h-[462px] rounded-xl"
+                />
+              ) : (
+                <div className="w-full h-[462px] rounded-xl bg-gray-200 flex items-center justify-center">
+                  <p className="text-gray-500">No cover image found</p>
+                </div>
+              )}
             </div>
             <div>
               <p>

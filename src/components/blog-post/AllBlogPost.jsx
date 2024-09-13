@@ -2,19 +2,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArticleCard } from "./ArticleCard";
 
-export default function BlogPost() {
-  const [articles, setArticles] = useState([]);
+export default function AllBlogPost({ articles }) {
   const [visibleCount, setVisibleCount] = useState(12); // State for visible articles
-
-  const fetchData = () => {
-    fetch("https://dev.to/api/articles")
-      .then((response) => response.json())
-      .then((data) => setArticles(data));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 12); // Increase visible articles by 15
@@ -25,8 +14,8 @@ export default function BlogPost() {
       <div className="container flex flex-wrap justify-between gap-5 ">
         {articles.slice(0, visibleCount).map((article) => {
           return (
-            <Link rel="stylesheet" href={`/blogs/${article.id}`}>
-              <ArticleCard key={article.id} article={article} />
+            <Link href={`/blogs/${article.id}`} key={article.id}>
+              <ArticleCard article={article} />
             </Link>
           );
         })}

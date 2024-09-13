@@ -4,22 +4,11 @@ import { ArticleCardHomePage } from "./ArticleCardHome";
 
 const TAGS = ["All", "Design", "Travel", "Fashion", "Technoloy"];
 
-export default function BlogPostHomepage() {
-  const [articles, setArticles] = useState([]);
+export default function BlogPostHome({ articles }) {
   const [visibleCount, setVisibleCount] = useState(9); // State for visible articles
 
-  const fetchData = () => {
-    fetch("https://dev.to/api/articles/latest")
-      .then((response) => response.json())
-      .then((data) => setArticles(data));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const handleLoadMore = () => {
-    setVisibleCount((prevCount) => prevCount + 9); // Increase visible articles by 15
+    setVisibleCount((prevCount) => prevCount + 9); // Increase visible articles by 9
   };
 
   return (
@@ -36,8 +25,8 @@ export default function BlogPostHomepage() {
         <div className="container flex flex-wrap justify-between gap-5 ">
           {articles.slice(0, visibleCount).map((article) => {
             return (
-              <Link rel="stylesheet" href={`/blogs/${article.id}`}>
-                <ArticleCardHomePage key={article.id} article={article} />
+              <Link key={article.id} href={`/blogs/${article.id}`}>
+                <ArticleCardHomePage article={article} />
               </Link>
             );
           })}

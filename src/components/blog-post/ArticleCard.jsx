@@ -1,4 +1,4 @@
-import { generateMonth } from "@/utils/months";
+import { generateMonth } from "../utils/months";
 
 export const ArticleCard = ({ article }) => {
   const publishedDate = new Date(article.published_at);

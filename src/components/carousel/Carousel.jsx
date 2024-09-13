@@ -1,11 +1,10 @@
-import { generateMonth } from "@/utils/months";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { LeftIcon } from "../svg/LeftIcon";
 import { RightIcon } from "../svg/RightIcon";
+import { generateMonth } from "../utils/months";
+import { useState } from "react";
 
-export default function Carousel() {
-  const [article, setArticle] = useState([]);
+export default function Carousel({ article }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleLeft = () => {
@@ -27,15 +26,7 @@ export default function Carousel() {
       }
     });
   };
-  const fetchData = () => {
-    fetch("https://dev.to/api/articles?per_page=6&top=2")
-      .then((response) => response.json())
-      .then((data) => setArticle(data));
-  };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
   const publishedDate = new Date(article[currentIndex]?.published_at);
 
   return (

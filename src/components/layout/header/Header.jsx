@@ -7,39 +7,42 @@ import { SearchDropDown } from "@/components/drop-down/DropDown";
 export const Header = ({ searchData }) => {
   const [searchValue, setSearchValue] = useState("");
   const [articlesForSearch, setArticlesForSearch] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
+  if (typeof window !== "undefined") {
+    document.addEventListener("mouseup", () => {
+      handleCloseDropDown();
+    });
+  }
+  const handleCloseDropDown = () => {
+    setIsOpen(false);
+  };
   const fetchSearchData = async () => {
     try {
       const response = await fetch("https://dev.to/api/articles?per_page=100");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
       const data = await response.json();
-      console.log("Fetched articles:", data); // Log the fetched articles
       setArticlesForSearch(data);
     } catch (error) {
       console.error("Error fetching search data:", error);
     }
   };
-  // const fetchData = () => {
-  //   fetch("https://dev.to/api/articles")
-  //     .then((response) => response.json())
-  //     .then((data) => setSearchData(data));
-  // };
 
   useEffect(() => {
-    // fetchData();
     fetchSearchData();
   }, []);
 
   const handleInputChange = (event) => {
+    setIsOpen(true);
     setSearchValue(event.target.value);
   };
 
   return (
-    <div className=" h-[100px] relative py-8 flex justify-center">
+    <div className=" relative py-8 flex justify-center">
       <div className=" flex container items-center justify-between">
-        <LogoIcon />
+        <Link href="/">
+          <LogoIcon />
+        </Link>
+
         <div className="text-[#3B3C4A]  text-base font-normal flex gap-10">
           <Link href="/">Home</Link>
           <Link href="blogs">Blog</Link>
@@ -50,17 +53,16 @@ export const Header = ({ searchData }) => {
             onChange={handleInputChange}
             type="text"
             placeholder="Search"
-            aria-label="Search input"
             value={searchValue}
             className="text-[#A1A1AA] bg-[#F4F4F5] rounded-[5px] p-2 "
           />
-          {searchValue && (
-            <SearchDropDown
-              articlesForSearch={articlesForSearch}
-              searchValue={searchValue}
-            />
-          )}
-
+          <SearchDropDown
+            articlesForSearch={articlesForSearch}
+            setSearchValue={setSearchValue}
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            searchValue={searchValue}
+          />
           <div className="absolute right-2 top-[10px]  ">
             <button aria-label="Search button">
               <SearchIcon />
